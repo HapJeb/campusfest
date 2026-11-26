@@ -23,7 +23,7 @@ export function spotsLeft(event) {
 
 export function isFull(event) {
   const capacity = Number(event?.capacity ?? 0);
-  const registeredv = Number(event?. registered ?? 0);
+  const registered = Number(event?.registered ?? 0);
   return registered >= capacity || spotsLeft(event) === 0;
 }
 
