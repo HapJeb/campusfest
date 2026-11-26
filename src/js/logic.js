@@ -23,7 +23,7 @@ export function spotsLeft(event) {
 
 export function isFull(event) {
   return spotsLeft(event) === 0;
-}
+}add
 
 export function spotsLabel(event) {
   if (isFull(event)) {
