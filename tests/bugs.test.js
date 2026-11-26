@@ -43,17 +43,17 @@ test.skip('[BUG-2] La búsqueda ignora acentos y mayúsculas', () => {
   assert.equal(matchesSearch(brazo, 'ROBÓTICO'), true, '"ROBÓTICO" debe encontrar "robótico"');
 });
 
-test.skip('[BUG-3] La fecha corta muestra el mes correcto', () => {
+test('[BUG-3] La fecha corta muestra el mes correcto', () => {
   assert.equal(formatShortDate('2026-11-24'), '24/11');
   assert.equal(formatShortDate('2026-12-02'), '02/12');
 });
 
-test.skip('[BUG-4] Un evento sin costo dice "Gratis"', () => {
+test('[BUG-4] Un evento sin costo dice "Gratis"', () => {
   assert.equal(formatPrice(0), 'Gratis');
   assert.equal(formatPrice(50), '$50');
 });
 
-test.skip('[BUG-5] "1 lugar" en singular', () => {
+test('[BUG-5] "1 lugar" en singular', () => {
   assert.equal(spotsLabel(event({ capacity: 120, registered: 119 })), '1 lugar');
   assert.equal(spotsLabel(event({ capacity: 20, registered: 12 })), '8 lugares');
 });

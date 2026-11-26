@@ -28,23 +28,32 @@ export function isFull(event) {
 }
 
 export function spotsLabel(event) {
-  if (isFull(event)) {
-    return 'Cupo lleno';
-  }
-  return `${spotsLeft(event)} lugares`;
+  const left = spotsLeft(event);
+  return `${left} ${left === 1 ? 'lugar' : 'lugares'}`;
 }
 
 // ---------- Precio ----------
 
 export function formatPrice(price) {
-  return `$${price}`;
+  const numeric = Number(price ?? 0);
+  if (numeric === 0) return 'Gratis';
+  return `$${numeric}`;
 }
 
 // ---------- Fechas ----------
 
 export function formatShortDate(dateStr) {
-  const date = toDate(dateStr);
-  return `${pad(date.getDate())}/${pad(date.getMonth())}`;
+  const parts = String(dateStr ?? '').split('-');
+  if (parts.length >= 3) {
+    const day = parts[2].slice(0, 2).padStart(2, '0');
+    const month = parts[1].padStart(2, '0');
+    return `${day}/${month}`;
+  }
+  const d = new Date(dateStr);
+  if (Number.isNaN(d.getTime())) return '';
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+  return `${day}/${month}`;
 }
 
 export function weekdayName(dateStr) {
