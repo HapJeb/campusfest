@@ -17,14 +17,12 @@ function pad(number) {
 
 export function spotsLeft(event) {
   const capacity = Number(event?.capacity ?? 0);
-  const registered = Number(event?. registered ?? 0);
+  const registered = Number(event?.registered ?? 0);
   return Math.max(0, capacity - registered);
 }
 
 export function isFull(event) {
-  const capacity = Number(event?.capacity ?? 0);
-  const registeredv = Number(event?. registered ?? 0);
-  return registered >= capacity || spotsLeft(event) === 0;
+  return spotsLeft(event) === 0;
 }
 
 export function spotsLabel(event) {
