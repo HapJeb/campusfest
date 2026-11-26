@@ -95,3 +95,18 @@ export function filterEvents(events, { query = '', category = 'todas', day = nul
     return true;
   });
 }
+
+function toUtcDayMs(dateStr) {
+  const [year, month, day] = String(dateStr).split('-').map(Number);
+  return Date.UTC(year, month - 1, day);
+}
+
+export function countdownLabel(eventDate, currentDate) {
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const diffDays = Math.round((toUtcDayMs(eventDate) - toUtcDayMs(currentDate)) / msPerDay);
+
+  if (diffDays < 0) {
+    return 'Finalizado';
+  }
+  return `Faltan ${diffDays} ${diffDays === 1 ? 'día' : 'días'}`;
+}
